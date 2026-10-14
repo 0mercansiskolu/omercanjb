@@ -78,7 +78,7 @@
     // it, so a user-agent quirk on the real 13.52 console can never lock it out.
     if (!supported) {
         setState("UNSUPPORTED FIRMWARE", "bad");
-        waitForTap("UNSUPPORTED (" + (key || "unknown") + ") -- press X or tap to run anyway", go);
+        waitForTap("DESTEKLEMİYOR (" + (key || "unknown") + ") X tuşuna basın veya yine de çalıştırmak için dokunun.", go);
         return;
     }
 
@@ -94,7 +94,7 @@
     } else if (ac.status === ac.UPDATEREADY) {
         try { ac.swapCache(); } catch (e) {}
         setCache("update downloaded", true);
-        waitForTap("UPDATE READY -- press X or tap to reload & run",
+        waitForTap("GÜNCELLEME HAZIR -- yeniden yükleyip çalıştırmak için X'e basın.",
                    function () { location.reload(); });
     } else {
         setCache("checking cache...");
@@ -111,7 +111,7 @@
         ac.addEventListener("updateready", function () {
             try { ac.swapCache(); } catch (e) {}
             setCache("update downloaded", true);
-            waitForTap("UPDATE READY -- press X or tap to reload & run",
+            waitForTap("GÜNCELLEME HAZIR -- yeniden yükleyip çalıştırmak için X'e basın.",
                        function () { location.reload(); });
         }, false);
         ac.addEventListener("noupdate", function () {
@@ -120,11 +120,11 @@
         }, false);
         ac.addEventListener("error", function () {
             setCache("cache unavailable");
-            waitForTap("CACHE FAILED -- press X or tap to run anyway", go);
+            waitForTap("Önbellek işlemi başarısız oldu; yine de çalıştırmak için X'e basın. ", go);
         }, false);
         ac.addEventListener("obsolete", function () {
             setCache("cache obsolete");
-            waitForTap("CACHE OBSOLETE -- press X or tap to run", go);
+            waitForTap("Önbellek güncel değil; çalıştırmak için X'e basın.", go);
         }, false);
     }
 })();
